@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon server"
+    "server": "nodemon server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "keywords": [],
   "author": "",
@@ -13,12 +15,20 @@
     "nodemon": "^2.0.4"
   },
   "dependencies": {
+    "apollo-cache-inmemory": "^1.6.6",
+    "apollo-client": "^2.6.10",
+    "apollo-link-http": "^1.5.17",
+    "concurrently": "^5.2.0",
     "config": "^3.3.1",
+    "cors": "^2.8.5",
+    "create-react-app": "^3.4.1",
     "express": "^4.17.1",
     "express-graphql": "^0.9.0",
     "graphql": "^15.0.0",
+    "graphql-tag": "^2.10.3",
     "loadash": "^1.0.0",
     "lodash": "^4.17.15",
-    "mongoose": "^5.9.15"
+    "mongoose": "^5.9.16",
+    "react-apollo": "^3.1.5"
   }
 }
