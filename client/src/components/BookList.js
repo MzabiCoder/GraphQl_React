@@ -1,21 +1,13 @@
-import React from 'react'
- import { gql } from 'apollo-boost'
+import React,{useState} from 'react'
+import { getBookQuery } from '../Queries/Queries.js'
 import { graphql } from 'react-apollo'
 import Spinner from './Spinner'
+import BookDetails from './BookDetails'
 
 
-const getBookQuery = gql`
-{
-    books{
-      name
-      id
-    }
-}
-
-`
 
 const BookList=({data:{books,loading}})=> {
-  
+  const [selected,setSelected]=useState(null)
 
     if (loading) {
         return <Spinner/>
@@ -24,10 +16,11 @@ const BookList=({data:{books,loading}})=> {
     return (
         <div>
             <ul id="book-list">
-                {books.length !== 0 && books.map(book => (
-                    <li key={book.id}>{book.name}</li>
+          {books.length !== 0 && books.map(book => (
+            <li key={book.id} onClick={e=>setSelected(book.id)} >{book.name}</li>
              ))}
             </ul>
+            <BookDetails selected={selected} />
         </div>
     )
 }
